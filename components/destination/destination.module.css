@@ -77,8 +77,77 @@
   font-size: small;
 }
 
-.addWishlistItem input, 
+.addWishlistItem input,
 .addWishlistItem select {
   height: 30px;
   margin-block-end: var(--spacing-20);
+}
+
+@media (max-width: 768px) {
+  .planetCard {
+    max-width: 90%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .planetThumbnail {
+    width: 120px;
+    height: 120px;
+  }
+
+  .wishlistItem {
+    width: 120px;
+    padding: var(--spacing-16);
+    margin: var(--spacing-16);
+  }
+
+  .wishlistItemThumbnail {
+    width: 50px;
+    height: 50px;
+  }
+
+  .addWishlistItem {
+    width: 180px;
+    padding: var(--spacing-16);
+  }
+
+  .addWishlistItem input,
+  .addWishlistItem select {
+    height: 28px;
+  }
+}
+
+/* For mobile devices (min-width: 480px) */
+@media (max-width: 480px) {
+  .planetCard {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .planetThumbnail {
+    width: 100px;
+    height: 100px;
+  }
+
+  .wishlistItem {
+    width: 100px;
+    padding: var(--spacing-12);
+    margin: var(--spacing-12);
+  }
+
+  .wishlistItemThumbnail {
+    width: 40px;
+    height: 40px;
+  }
+
+  .addWishlistItem {
+    width: 160px;
+    padding: var(--spacing-12);
+  }
+
+  .addWishlistItem input,
+  .addWishlistItem select {
+    height: 25px;
+  }
 }
