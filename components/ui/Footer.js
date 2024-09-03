@@ -47,7 +47,7 @@ export const Footer = () => {
       </div>
       <div className={styles.pages}>
         <h3>Pages</h3>
-        <ul className={styles.footerList}>
+        <ul className={styles.footerListPages}>
           <li>
             <Link href="/">Home</Link>
           </li>
@@ -65,7 +65,7 @@ export const Footer = () => {
 
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
-        <ul className={styles.footerList}>
+        <ul className={styles.footerListMedia}>
           {socialMedias.map((media, index) => (
             <SocialMediaItem
               url={media.url}
