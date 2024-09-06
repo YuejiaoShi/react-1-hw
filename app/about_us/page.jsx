@@ -1,6 +1,6 @@
-import OurCrew from "./OurCrew";
-import OurPartners from "./OurPartners";
-import OurValues from "./OurValues";
+import OurCrew from "../../components/about_us/OurCrew";
+import OurPartners from "../../components/about_us/OurPartners";
+import OurValues from "../../components/about_us/OurValues";
 import styles from "./page.module.css";
 
 export const Crew = () => {

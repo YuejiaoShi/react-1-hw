@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
-import PlanetCard from "./PlanetCard";
+import PlanetCard from "../../components/destination/PlanetCard";
 
 const planets = [
   {
