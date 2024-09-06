@@ -33,17 +33,17 @@ const planets = [
 
 export const Destinations = () => {
   const [selectedPlanets, setSelectedPlanets] = useState([]);
-  let numberOfPlanets = selectedPlanets.length;
+  const numberOfPlanets = selectedPlanets.length;
 
-  const onAddPlanet = (name, setIsSelected) => {
-    setSelectedPlanets([...selectedPlanets, name]);
-    setIsSelected(true);
+  const onAddOrRemovePlanet = (name) => {
+    setSelectedPlanets((preSelectedList) => {
+      if (preSelectedList.includes(name)) {
+        return preSelectedList.filter((planet) => planet !== name);
+      } else {
+        return [...preSelectedList, name];
+      }
+    });
   };
-  const onRemovePlanet = (name, setIsSelected) => {
-    setSelectedPlanets(selectedPlanets.filter((planet) => planet !== name));
-    setIsSelected(false);
-  };
-
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
@@ -84,8 +84,8 @@ export const Destinations = () => {
           <h2>Possible destinations</h2>
           {planets.map((planet, index) => (
             <PlanetCard
-              onAddPlanet={onAddPlanet}
-              onRemovePlanet={onRemovePlanet}
+              onAddOrRemovePlanet={onAddOrRemovePlanet}
+              isSelected={selectedPlanets.includes(planet.planetName)}
               planetName={planet.planetName}
               description={planet.description}
               thumbnail={planet.thumbnail}
