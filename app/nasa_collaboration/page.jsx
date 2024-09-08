@@ -30,9 +30,6 @@ export const NasaCollaboration = () => {
 
     fetchRoverPhotos();
     fetchDailyImg();
-
-    // TASK - React 1 week 3
-    // fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable
   }, []);
 
   return (
@@ -41,10 +38,7 @@ export const NasaCollaboration = () => {
         <h1>Collaboration with NASA</h1>
         <section className="card">
           <h2>Astronomy Picture of the day</h2>
-          {/* TASK - React 1 week 3 */}
-          {/* After fetching data from the NASA_URLs.astronomyPicOfTheDay url, display the returned data here */}
-          {/* You should display the title, explanation, and the image using the url from the response */}
-          {/* <img src={dailyImg.url}> */}
+          <img src={dailyImg.url} />
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
