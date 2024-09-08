@@ -84,7 +84,7 @@ export const Destinations = () => {
 
           <AddWishlistItem onAddWishlistItem={handleAddWishlistItem} />
 
-          <h3>Your current wishlist</h3>
+          {numberOfPlanets !== 0 ? <h3>Your current wishlist: </h3> : <></>}
           <div className={styles.wishlistList}>
             {selectedPlanets.map((planet) => (
               <PlanetWishlistItem
