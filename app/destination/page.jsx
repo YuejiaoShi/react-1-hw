@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PlanetCard from "../../components/destination/PlanetCard";
 import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
@@ -34,6 +34,8 @@ const planets = [
 
 export const Destinations = () => {
   const [selectedPlanets, setSelectedPlanets] = useState([]);
+  const [wishList, setWishList] = useState([]);
+
   const numberOfPlanets = selectedPlanets.length;
 
   const onAddOrRemovePlanet = (name) => {
@@ -45,6 +47,23 @@ export const Destinations = () => {
       }
     });
   };
+
+  function handleAddWishlistItem(name, thumbnail) {
+    const isInWithList = wishList.some((wish) => wish.name === name);
+    if (isInWithList) {
+      console.error("Item already in wishlist");
+      return;
+    } else {
+      setWishList((prevWishList) => {
+        return [...prevWishList, { name, thumbnail }];
+      });
+    }
+  }
+  // check wishList items when wishList change
+  useEffect(() => {
+    console.log(wishList);
+  }, [wishList]);
+
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
@@ -58,7 +77,7 @@ export const Destinations = () => {
           )}
           <b>List coming soon after lesson 3!</b>
 
-          <AddWishlistItem/>
+          <AddWishlistItem onAddWishlistItem={handleAddWishlistItem} />
           {/* TASK - React 1 week 3 */}
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
