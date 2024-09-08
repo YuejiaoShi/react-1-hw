@@ -46,8 +46,6 @@ export const NasaCollaboration = () => {
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
-          {/* TASK - React 1 week 3 */}
-          {/* Iteratate over the roverPhoto?.photos array and display all the pictures! */}
           {roverPhoto?.photos?.length ? (
             <div className={styles.roverPhotoContainer}>
               {roverPhoto.photos.map((photo) => (
