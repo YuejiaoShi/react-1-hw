@@ -35,7 +35,6 @@ const planets = [
 
 export const Destinations = () => {
   const [selectedPlanets, setSelectedPlanets] = useState([]);
-  // const [wishList, setWishList] = useState([]);
 
   const numberOfPlanets = selectedPlanets.length;
 
@@ -51,21 +50,19 @@ export const Destinations = () => {
     });
   };
 
-  // function handleAddWishlistItem(name, thumbnail) {
-  //   const isInWithList = wishList.some((wish) => wish.name === name);
-  //   if (isInWithList) {
-  //     console.error("Item already in wishlist");
-  //     return;
-  //   } else {
-  //     setWishList((prevWishList) => {
-  //       return [...prevWishList, { name, thumbnail }];
-  //     });
-  //   }
-  // }
-  // // check wishList items when wishList change
-  // useEffect(() => {
-  //   console.log(wishList);
-  // }, [wishList]);
+  function handleAddWishlistItem(name, thumbnail) {
+    const isInWithList = selectedPlanets.some(
+      (wish) => wish.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isInWithList) {
+      alert(`${name} already in wishlist`);
+      return;
+    } else {
+      setSelectedPlanets((prevWishList) => {
+        return [...prevWishList, { name, thumbnail }];
+      });
+    }
+  }
 
   const removeFromWishlist = (name) => {
     setSelectedPlanets((prevSelectedList) => {
@@ -85,7 +82,7 @@ export const Destinations = () => {
             <p>You have {numberOfPlanets} in your wishlist</p>
           )}
 
-          <AddWishlistItem onAddWishlistItem={onAddOrRemovePlanet} />
+          <AddWishlistItem onAddWishlistItem={handleAddWishlistItem} />
 
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
