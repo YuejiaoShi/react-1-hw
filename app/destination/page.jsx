@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
+
 import PlanetCard from "../../components/destination/PlanetCard";
+import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
 
 const planets = [
   {
@@ -57,10 +58,7 @@ export const Destinations = () => {
           )}
           <b>List coming soon after lesson 3!</b>
 
-          {/* STOP! - this is for week 3!*/}
-          {/* TASK - React 1 week 3 */}
-          {/* Import the AddWishlistItem react component */}
-          {/* <AddWishlistItem /> */}
+          <AddWishlistItem/>
           {/* TASK - React 1 week 3 */}
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
