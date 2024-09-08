@@ -1,0 +1,19 @@
+/* RoverPhoto.module.css */
+.roverPhotoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.roverPhotoItem {
+  flex: 0 0 15rem;
+  box-sizing: border-box;
+}
+
+.nasaPicOfTheDayImg {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}

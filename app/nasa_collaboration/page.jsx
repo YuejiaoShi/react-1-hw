@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "./page.module.css";
-
+import RoverPhoto from "@/components/nasa_collaboration/RoverPhoto";
+import styles from "../../components/nasa_collaboration/nasa_collaboration.module.css";
 const API_KEY = "jZ3XQ22AOCq4X1D1Qz2XWfE4I82l1C6uZETbQWn8";
 
 const NASA_URLs = {
@@ -33,9 +33,8 @@ export const NasaCollaboration = () => {
   }, []);
 
   useEffect(() => {
-    console.log(dailyImg);
     console.log(roverPhoto);
-  }, [dailyImg, roverPhoto]);
+  }, [roverPhoto]);
 
   return (
     <div className="fullBGpicture">
@@ -50,24 +49,16 @@ export const NasaCollaboration = () => {
           {/* TASK - React 1 week 3 */}
           {/* Iteratate over the roverPhoto?.photos array and display all the pictures! */}
           {roverPhoto?.photos?.length ? (
-            <>
-              {/* TASK - React 1 week 3 */}
-              {/* Create a react component for the <RoverPhoto />, which should accept the following props */}
-              {/* 1. src: source of the img (img_src in the data from the API) */}
-              {/* 2. date: earth_date data coming from the API */}
-              {/* 3. roverName: will be in the rover object - rover.name */}
-
-              {/* TIPS: */}
-              {/* If you don't know how the data looks like you can: */}
-              {/* 1. use console.log() to write the data to the console */}
-              {/* 2. use the network tab in the developer tab - https://developer.chrome.com/docs/devtools/network */}
-              <p>Date {roverPhoto.photos[0]?.earth_date}</p>
-              <img
-                className={styles.nasaPicOfTheDayImg}
-                src={roverPhoto.photos[0]?.img_src}
-                alt={dailyImg.title}
-              />
-            </>
+            <div className={styles.roverPhotoContainer}>
+              {roverPhoto.photos.map((photo) => (
+                <RoverPhoto
+                  key={photo.id}
+                  src={photo.img_src}
+                  date={photo.earth_date}
+                  roverName={photo.rover.name}
+                />
+              ))}
+            </div>
           ) : (
             <p>Loading rover photos...</p>
           )}
