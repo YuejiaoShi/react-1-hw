@@ -79,7 +79,7 @@ export const Destinations = () => {
             <p>You have {numberOfPlanets} in your wishlist</p>
           )}
 
-          <AddWishlistItem onAddWishlistItem={handleAddWishlistItem} />
+          <AddWishlistItem onAddWishlistItem={onAddOrRemovePlanet} />
           {/* TASK - React 1 week 3 */}
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
