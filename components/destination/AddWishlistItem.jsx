@@ -7,15 +7,11 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
   const [thumbnail, onThumbnailChange] = useState(
     "/destination/image-europa.png"
   );
-
   const [customWishlist, setCustomWishlist] = useState("");
 
   const onAddItemPressed = () => {
-    // TASK - React 1 week 3
-    // implement this function
-    // Clear the <input/> field on button press
-    // pass the thumbnail and the name from the input to the onAddWishlistItem function
-    // call the onAddWishlistItem here
+    onAddWishlistItem(customWishlist, thumbnail);
+    setCustomWishlist("");
   };
 
   return (
@@ -40,7 +36,7 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
         <option value="/destination/image-moon.png">MOON</option>
         <option value="/destination/image-titan.png">TITAN</option>
       </select>
-      <button>ADD CUSTOM</button>
+      <button onClick={onAddItemPressed}>ADD CUSTOM</button>
     </div>
   );
 };
