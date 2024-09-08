@@ -23,7 +23,7 @@ function PlanetCard({
       <button
         className="roundButton"
         onClick={() => {
-          onAddOrRemovePlanet(planetName);
+          onAddOrRemovePlanet(planetName, thumbnail);
         }}
       >
         {isSelected ? "REMOVE" : "ADD PLANET"}
