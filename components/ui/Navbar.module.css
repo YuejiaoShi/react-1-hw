@@ -17,7 +17,7 @@
   height: 0.1px;
   width: 30vw;
   background-color: #999;
-  margin-inline-end: -60px;
+  margin-inline-end: -40px;
   z-index: 10;
 }
 
@@ -45,7 +45,6 @@
   padding: 0 var(--spacing-8);
   margin: var(--spacing-20);
   background-color: transparent;
-
 }
 
 .navbarBG {
@@ -71,7 +70,47 @@
   letter-spacing: 1px;
 }
 
-.navbarLinks:hover, .isLinkActive {
+.navbarLinks:hover,
+.isLinkActive {
   border-block-end: var(--spacing-04) solid var(--border-color);
   margin-block-end: -4px;
+}
+
+@media (max-width: 768px) {
+  .decorativeLine {
+    width: 50vw;
+    margin-left: 1rem;
+    margin-inline-end: 0;
+  }
+  .navbarBG {
+    position: absolute;
+    width: 35%;
+    height: 10rem;
+    backdrop-filter: blur(20px);
+  }
+
+  .navbarLogo {
+    margin-inline-end: 0;
+    padding-left: var(--spacing-1);
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbarList {
+    flex-direction: column;
+    padding: 0;
+    margin-top: 2rem;
+    gap: var(--spacing-12);
+  }
+
+  .navbarList li {
+    margin: var(--spacing-4) 0;
+  }
+
+  .navbarLinks a {
+    font-size: small;
+  }
 }

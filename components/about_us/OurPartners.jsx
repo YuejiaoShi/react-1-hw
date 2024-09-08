@@ -20,7 +20,7 @@ const OurPartners = () => {
       </p>
       <ul className={styles.ulContainer}>
         {partners.map((image, index) => (
-          <li key={index} className={styles.listItem}>
+          <li key={`partner-${index}`} className={styles.listItem}>
             <img
               src={image.logo}
               alt={`Logo of ${image.partner}`}

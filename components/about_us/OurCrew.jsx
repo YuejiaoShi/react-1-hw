@@ -60,7 +60,7 @@ const OurCrew = () => {
       <ul className={styles.ulContainer}>
         {crew.map((member, index) => (
           <CrewMember
-            key={index}
+            key={`crew-${index}`}
             name={member.name}
             image={member.image}
             title={member.title}
