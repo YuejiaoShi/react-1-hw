@@ -42,11 +42,9 @@ export const Navbar = () => {
               itemIndex={index + 1}
               title={item.title}
               link={item.link}
-              currentPath={currentPath}
+              isActive={currentPath === item.link}
             />
           ))}
-          {/* TASK - React 1 week 3 */}
-          {/* replace repeating content by using navbarItems.map(() => <NavLink />) */}
         </ul>
       </nav>
     </header>
