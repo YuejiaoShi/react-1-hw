@@ -32,6 +32,11 @@ export const NasaCollaboration = () => {
     fetchDailyImg();
   }, []);
 
+  useEffect(() => {
+    console.log(dailyImg);
+    console.log(roverPhoto);
+  }, [dailyImg, roverPhoto]);
+
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
