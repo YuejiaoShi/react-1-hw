@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import styles from "./Navbar.module.css";
-import NavItem from "./NavItem";
+import NavItem from "./NavLink";
+import NavLink from "./NavLink";
 
 const navbarItems = [
   {
@@ -36,8 +37,8 @@ export const Navbar = () => {
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
           {navbarItems.map((item, index) => (
-            <NavItem
-            key={`nav-item-${index}`}
+            <NavLink
+              key={`nav-item-${index}`}
               itemIndex={index + 1}
               title={item.title}
               link={item.link}

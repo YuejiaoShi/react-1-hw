@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 import classNames from "classnames";
 
-function NavItem({ title, link, itemIndex, currentPath }) {
+function NavLink({ title, link, itemIndex, currentPath }) {
   return (
     <li
       className={classNames(styles.navbarLinks, {
@@ -16,4 +16,4 @@ function NavItem({ title, link, itemIndex, currentPath }) {
   );
 }
 
-export default NavItem;
+export default NavLink;
