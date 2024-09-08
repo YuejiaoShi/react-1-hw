@@ -10,6 +10,10 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
   const [customWishlist, setCustomWishlist] = useState("");
 
   const onAddItemPressed = () => {
+    if (!customWishlist) {
+      alert("Please enter a name for the wishlist item");
+      return;
+    }
     onAddWishlistItem(customWishlist, thumbnail);
     setCustomWishlist("");
   };
