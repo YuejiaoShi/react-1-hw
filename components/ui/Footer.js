@@ -71,7 +71,7 @@ export const Footer = () => {
               url={media.url}
               title={media.title}
               icon={media.icon}
-              key={index}
+              key={`social-media-${index}`}
             />
           ))}
         </ul>

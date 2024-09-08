@@ -37,7 +37,7 @@ export const Navbar = () => {
         <ul className={styles.navbarList}>
           {navbarItems.map((item, index) => (
             <NavItem
-              key={index}
+            key={`nav-item-${index}`}
               itemIndex={index + 1}
               title={item.title}
               link={item.link}

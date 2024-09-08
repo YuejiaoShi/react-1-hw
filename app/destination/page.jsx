@@ -89,7 +89,7 @@ export const Destinations = () => {
               planetName={planet.planetName}
               description={planet.description}
               thumbnail={planet.thumbnail}
-              key={index}
+              key={`planets-${index}`}
             />
           ))}
         </section>
