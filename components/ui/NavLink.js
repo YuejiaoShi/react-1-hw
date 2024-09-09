@@ -2,11 +2,11 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 import classNames from "classnames";
 
-function NavItem({ title, link, itemIndex, currentPath }) {
+function NavLink({ title, link, itemIndex, isActive }) {
   return (
     <li
       className={classNames(styles.navbarLinks, {
-        [styles.isLinkActive]: link === currentPath,
+        [styles.isLinkActive]: isActive,
       })}
     >
       <Link href={link}>
@@ -16,4 +16,4 @@ function NavItem({ title, link, itemIndex, currentPath }) {
   );
 }
 
-export default NavItem;
+export default NavLink;

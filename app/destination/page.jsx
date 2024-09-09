@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
+import { useEffect, useState } from "react";
+import styles from "../../components/destination/destination.module.css";
 import PlanetCard from "../../components/destination/PlanetCard";
+import { AddWishlistItem } from "@/components/destination/AddWishlistItem";
+import PlanetWishlistItem from "@/components/destination/PlanetWishlistItem";
 
 const planets = [
   {
@@ -33,17 +35,41 @@ const planets = [
 
 export const Destinations = () => {
   const [selectedPlanets, setSelectedPlanets] = useState([]);
+
   const numberOfPlanets = selectedPlanets.length;
 
-  const onAddOrRemovePlanet = (name) => {
+  const onAddOrRemovePlanet = (name, thumbnail) => {
     setSelectedPlanets((preSelectedList) => {
-      if (preSelectedList.includes(name)) {
-        return preSelectedList.filter((planet) => planet !== name);
+      const isSelected = preSelectedList.some((planet) => planet.name === name);
+
+      if (isSelected) {
+        return preSelectedList.filter((planet) => planet.name !== name);
       } else {
-        return [...preSelectedList, name];
+        return [...preSelectedList, { name, thumbnail }];
       }
     });
   };
+
+  function handleAddWishlistItem(name, thumbnail) {
+    const isInWithList = selectedPlanets.some(
+      (wish) => wish.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isInWithList) {
+      alert(`${name} already in wishlist`);
+      return;
+    } else {
+      setSelectedPlanets((prevWishList) => {
+        return [...prevWishList, { name, thumbnail }];
+      });
+    }
+  }
+
+  const removeFromWishlist = (name) => {
+    setSelectedPlanets((prevSelectedList) => {
+      return prevSelectedList.filter((planet) => planet.name !== name);
+    });
+  };
+
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
@@ -55,37 +81,28 @@ export const Destinations = () => {
           ) : (
             <p>You have {numberOfPlanets} in your wishlist</p>
           )}
-          <b>List coming soon after lesson 3!</b>
 
-          {/* STOP! - this is for week 3!*/}
-          {/* TASK - React 1 week 3 */}
-          {/* Import the AddWishlistItem react component */}
-          {/* <AddWishlistItem /> */}
-          {/* TASK - React 1 week 3 */}
-          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
-          {/* Implement the "REMOVE" function */}
-          {/* uncomment the following code snippet: */}
-          {/* 
-          <h3>Your current wishlist</h3>
+          <AddWishlistItem onAddWishlistItem={handleAddWishlistItem} />
+
+          {numberOfPlanets !== 0 ? <h3>Your current wishlist: </h3> : <></>}
           <div className={styles.wishlistList}>
-            <PlanetWishlistItem 
-              name="europa"
-              onRemove={() => removeFromWishlist('europa')}
-              thumbnail="/destination/image-europa.png"
-            />
-            <PlanetWishlistItem 
-              name="europa"
-              onRemove={() => removeFromWishlist('europa')}
-              thumbnail="/destination/image-europa.png"
-            />
-          </div> */}
+            {selectedPlanets.map((planet) => (
+              <PlanetWishlistItem
+                name={planet.name}
+                onRemove={() => removeFromWishlist(planet.name)}
+                thumbnail={planet.thumbnail}
+              />
+            ))}
+          </div>
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
           {planets.map((planet, index) => (
             <PlanetCard
               onAddOrRemovePlanet={onAddOrRemovePlanet}
-              isSelected={selectedPlanets.includes(planet.planetName)}
+              isSelected={selectedPlanets.some(
+                (p) => p.name === planet.planetName
+              )}
               planetName={planet.planetName}
               description={planet.description}
               thumbnail={planet.thumbnail}
