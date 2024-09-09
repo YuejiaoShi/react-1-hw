@@ -13,19 +13,31 @@ const NASA_URLs = {
 export const NasaCollaboration = () => {
   const [dailyImg, setDailyImg] = useState({});
   const [roverPhoto, setRoverPhoto] = useState({});
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchRoverPhotos = async () => {
-      const roverPhotoResponse = await fetch(NASA_URLs.marsRoverPhoto).then(
-        (response) => response.json()
-      );
-      setRoverPhoto(roverPhotoResponse);
+      try {
+        const roverPhotoResponse = await fetch(NASA_URLs.marsRoverPhoto);
+        if (!roverPhotoResponse.ok)
+          throw new Error("Error fetching rover photos");
+        const roverPhotoData = await roverPhotoResponse.json();
+        setRoverPhoto(roverPhotoData);
+      } catch (err) {
+        setError(err.message);
+      }
     };
+
     const fetchDailyImg = async () => {
-      const dailyImgResponse = await fetch(NASA_URLs.astronomyPicOfTheDay).then(
-        (response) => response.json()
-      );
-      setDailyImg(dailyImgResponse);
+      try {
+        const dailyImgResponse = await fetch(NASA_URLs.astronomyPicOfTheDay);
+        if (!dailyImgResponse.ok)
+          throw new Error("Error fetching astronomy picture");
+        const dailyImgData = await dailyImgResponse.json();
+        setDailyImg(dailyImgData);
+      } catch (err) {
+        setError(err.message);
+      }
     };
 
     fetchRoverPhotos();
@@ -33,8 +45,9 @@ export const NasaCollaboration = () => {
   }, []);
 
   useEffect(() => {
+    console.log(dailyImg);
     console.log(roverPhoto);
-  }, [roverPhoto]);
+  }, [roverPhoto, dailyImg]);
 
   return (
     <div className="fullBGpicture">
@@ -42,7 +55,11 @@ export const NasaCollaboration = () => {
         <h1>Collaboration with NASA</h1>
         <section className="card">
           <h2>Astronomy Picture of the day</h2>
-          <img src={dailyImg.url} />
+          {error ? (
+            <p>Error: {error}</p>
+          ) : (
+            <img src={dailyImg.url} alt={dailyImg.title} />
+          )}
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
