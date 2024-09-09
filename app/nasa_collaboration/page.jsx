@@ -54,11 +54,19 @@ export const NasaCollaboration = () => {
       <main className="mainContent">
         <h1>Collaboration with NASA</h1>
         <section className="card">
-          <h2>Astronomy Picture of the day</h2>
+          <h2>
+            Astronomy Picture of the day
+          </h2>
           {error ? (
             <p>Error: {error}</p>
           ) : (
-            <img src={dailyImg.url} alt={dailyImg.title} />
+            <div className={styles.astronomyPicContainer}>
+              <img
+                src={dailyImg.url}
+                alt={dailyImg.title}
+                className={styles.astronomyPicOfTheDayImg}
+              />
+            </div>
           )}
         </section>
         <section className="card">
